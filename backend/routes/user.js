@@ -30,8 +30,8 @@ router.post('/signup', async (req, res) => {
         });
     }
 
-    const dbuser = await User.create(body);
-    // so now creating the account for the user here also 
+    const dbuser = await User.create(body);   // user is created 
+    // so now creating the account for the user here also with the user id is foregin key
     await Account.create({
         userId: dbuser._id, 
         balance: 1 + Math.random() * 10000
@@ -97,5 +97,31 @@ router.put('/', authMiddleware, async (req, res) => {
         message: "User information updated successfully"
     });
 });
+
+// so for importing the all usere here 
+router.get('/bulk' , async(req , res) =>{
+    const filter = req.query.filter || "";
+    const users = await User.find({
+        $or: [{
+            firstname: {
+                "$regex": filter
+            }
+        }, {
+            lastname: {
+                "$regex": filter
+            }
+        }]
+    });
+    // so returing all user 
+    res.json({
+        users : users.map(user => ({
+            firstName : user.firstname,
+            lastName : user.lastname,
+            userName : user.username,
+            _id : user._id
+        }))
+    });
+    
+})
 
 module.exports = router;
