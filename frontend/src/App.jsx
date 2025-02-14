@@ -4,7 +4,7 @@ import {
   Routes,
 } from "react-router-dom";
 import './App.css'
-import { Signup } from "./pages/signup"; 
+import { Signup } from "./pages/Signup";   // always ensure the case sensitivity not problem in window but in linux
 import { Signin } from "./pages/Signin";
 import { Dashboard } from "./pages/Dashboard";
 import { SendMoney } from "./pages/SendMoney";

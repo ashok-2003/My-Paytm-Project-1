@@ -1,11 +1,17 @@
 FROM node:jod-alpine3.20
-RUN npm install -g serve
+
 WORKDIR /app
-COPY dist app/dist
-EXPOSE 5172
 
-CMD ["serve", "-s", "dist", "-l", "5172"]
-# -s refer the spa as we use the react so if it change from one path to other to aviod 404 error we have used it 
+COPY package*.json ./
 
-# not work because the backend url is hardcoded so const API_URL = "http://host.docker.internal:3000";
-# this should be the required url to work it 
+RUN npm install
+
+COPY . .
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
+
+
+# this will not work first of all go to config.js and change the backend url to your container name or docker url 
+# i have already modified the vite.config.json so now worries thier 
