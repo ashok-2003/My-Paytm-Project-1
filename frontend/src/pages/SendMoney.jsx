@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import { useState } from 'react';
+import { Backend_URL } from '../config';
 
 export const SendMoney = () => {
     const [searchParams] = useSearchParams();
@@ -9,7 +10,7 @@ export const SendMoney = () => {
     const [amount, setAmount] = useState(0);
 
     return <div class="flex justify-center h-screen bg-gray-100">
-        <div className="h-full flex flex-col justify-center">
+        <div className="flex flex-col justify-center h-full">
             <div
                 class="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg"
             >
@@ -43,7 +44,7 @@ export const SendMoney = () => {
                     </div>
                     {/* backend will not able to handle multiple Reuest at the same type  */}
                     <button onClick={async () => {
-                        const response = await axios.post("http://localhost:3000/api/v1/accounts/transfer", {
+                        const response = await axios.post(`${Backend_URL}/accounts/transfer`, {
                             to: id,
                             amount
                         }, {

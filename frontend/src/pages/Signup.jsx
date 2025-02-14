@@ -7,6 +7,7 @@ import {BottomWarning} from "../components/BottomWarning";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
+import { Backend_URL } from "../config";
 
 export const Signup = () => {
   // so now for propogoating the changes we have to 
@@ -16,11 +17,11 @@ export const Signup = () => {
   const[password , setPassword] = useState("");
   const Navigate = useNavigate();
     return (
-      <div className="bg-slate-300 h-screen flex justify-center">
+      <div className="flex justify-center h-screen bg-slate-300">
         <div className="flex flex-col justify-center">
-          <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
+          <div className="p-2 px-4 text-center bg-white rounded-lg w-80 h-max">
             <Heading label={"Sign Up"} />
-            <SubHeading label={"Give you all info to me hehe.."} />
+            <SubHeading label={"Give your all info to me hehe.."} />
             <InputBox label={"First Name"} sublabel={"Ashoka"} onChange={(e) => {
               setFirstname(e.target.value);
             }} />
@@ -35,7 +36,7 @@ export const Signup = () => {
             }} />
             <div className="pt-4">
             <Button onClick={async () => {
-            const response = await axios.post("http://localhost:3000/api/v1/users/signup", {
+            const response = await axios.post(`${Backend_URL}/users/signup`, {
               username,
               firstname,
               lastname,

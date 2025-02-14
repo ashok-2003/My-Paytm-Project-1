@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Button } from "./Button"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Backend_URL } from "../config";
 
 
 export const Users = () => {
@@ -10,14 +11,14 @@ export const Users = () => {
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/users/bulk?filter="+filter)
+        axios.get(`${Backend_URL}/users/bulk?filter=`+filter)
             .then(response => {
                 setUsers(response.data.users)
             })
     }, [filter])
 
     return <>
-        <div className="font-bold mt-6 text-lg">
+        <div className="mt-6 text-lg font-bold">
             Users
         </div>
         <div className="my-2">
@@ -37,7 +38,7 @@ function User({user}) {
 
     return <div className="flex justify-between">
         <div className="flex">
-            <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
+            <div className="flex justify-center w-12 h-12 mt-1 mr-2 rounded-full bg-slate-200">
                 <div className="flex flex-col justify-center h-full text-xl">
                     {user.firstName[0]}
                     {/* so this gives the first letter of the name in the input  */}
