@@ -1,0 +1,19 @@
+# // so this is the yaml file for running both container together 
+# enviroments varialbe donse not need quotes to run 
+# don't include the htpps as container talk each other with default url
+version: "3.8"
+services:
+  paytm-frontendv2:
+    build:
+      context: ./frontend
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_BACKEND_URL=http://paytm-backendv2:3000/api/v1
+    depends_on:
+      - paytm-backendv2
+  paytm-backendv2:
+    build:
+      context: ./backend
+    ports:
+      - 3000:3000
