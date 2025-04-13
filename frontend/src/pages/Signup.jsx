@@ -22,16 +22,16 @@ export const Signup = () => {
           <div className="p-2 px-4 text-center bg-white rounded-lg w-80 h-max">
             <Heading label={"Sign Up"} />
             <SubHeading label={"Give your all info to me hehe.."} />
-            <InputBox label={"First Name"} sublabel={"Ashoka"} onChange={(e) => {
+            <InputBox label={"First Name"} sublabel={"First name"} onChange={(e) => {
               setFirstname(e.target.value);
             }} />
-            <InputBox label={"Last Name"} sublabel={"Gupta"} onChange={(e) => {
+            <InputBox label={"Last Name"} sublabel={"last name"} onChange={(e) => {
               setLastname(e.target.value);
             }} />
-            <InputBox label={"Email Id"} sublabel={"example123@gmail.com"} onChange={(e) => {
+            <InputBox label={"Email Id"} sublabel={"Your email."} onChange={(e) => {
               setUsername(e.target.value);
             }} />
-            <InputBox label={"Password"} sublabel={"asyxkhhti"} onChange={(e) => {
+            <InputBox label={"Password"} sublabel={"password"} onChange={(e) => {
               setPassword(e.target.value);
             }} />
             <div className="pt-4">

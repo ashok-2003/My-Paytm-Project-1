@@ -18,10 +18,10 @@ export const Signin = () => {
             <div className="p-2 px-4 text-center bg-white rounded-lg w-80 h-max">
                 <Heading label={"Sign In"}></Heading>
                 <SubHeading label={"Enter your info to access which i have already hehe .."} />
-                <InputBox label={"Email Id"} sublabel={"example123@gmail.com"} onChange={(e) => {
+                <InputBox label={"Email Id"} sublabel={"your email .."} onChange={(e) => {
                     setUsername(e.target.value);
                 }} />
-                <InputBox label={"Password"} sublabel={"asyxkhhti"} onChange={(e) => {
+                <InputBox label={"Password"} sublabel={"password.."} onChange={(e) => {
                     setPassword(e.target.value);
                 }} />
                 <div className="pt-4">
